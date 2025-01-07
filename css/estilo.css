@@ -184,6 +184,37 @@ span {
     display : inline-block;
 }
 
+/*-----Modal-----*/
+/* Descripción: Estilos para la ventana modal que aparece al inicio y al final del juego
+* Estructura:
+* - modal-modalBotones
+* - modal-start
+*/
+.modal{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    background-color: #00545886;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalBotones{
+    height: 120px;
+    width: 170px;
+    padding-top: 512px;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 1.2em;
+}
+
+.modal .modalBotones p:nth-child(2){
+    align-self: flex-start;
+}
+
 /*-----Interruptor On/Off-----*/
 /* Descripción: Estilos para el contenedor donde se encuentra el botón que controla el estado del juego cuando se encuentra apagado
 * Estructura:
@@ -220,41 +251,10 @@ span {
     box-shadow: 0 0 15px rgba(255, 230, 0, 0.7);
 }
 
-/*-----Modal-----*/
-/* Descripción: Estilos para la ventana modal que aparece al inicio y al final del juego
-* Estructura:
-* - modal-modalBotones
-* - modal-start
-*/
-.modal{
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    background-color: #00545886;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.modalBotones{
-    height: 120px;
-    width: 170px;
-    padding-top: 512px;
-    text-align: center;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    font-size: 1.2em;
-}
-
-.modal .modalBotones p:nth-child(2){
-    align-self: flex-start;
-}
-
-.modal .start{
+.onOff .start{
     text-align: center;
     font-size: 2.5em;
-    padding-top: 110px;
+    padding-bottom: 100px;
 }
 
 /*-----Estilos Responsivos-----*/
@@ -276,9 +276,6 @@ span {
     .modalBotones{
         padding-top: 425px;
     }
-    .modal .start{
-        padding-top: 238px;
-    }
 }
 @media screen and (max-width:600px){
     .huevito{
@@ -293,9 +290,6 @@ span {
     }
     .modalBotones{
         padding-top: 413px;
-    }
-    .modal .start{
-        padding-top: 240px;
     }
 }
 
@@ -327,8 +321,5 @@ span {
     .modalBotones{
         width: 150px;
         padding-top: 393px;
-    }
-    .modal .start{
-        padding-top: 230px;
     }
 }
