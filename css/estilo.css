@@ -55,6 +55,8 @@ span {
     align-items: center;
     background-color: white;
     /* El border-radius está diseñado para crear la forma del huevo*/
+    background-image: url(../img/huevo/fondo.png);
+    background-size: cover;
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; 
     box-shadow: 0 0 50px rgba(192, 111, 124, 0.384);
 }
