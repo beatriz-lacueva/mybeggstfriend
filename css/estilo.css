@@ -1,0 +1,332 @@
+/*-----Estilo General del Cuerpo-----*/
+/* Descripción: Estilos generales para el cuerpo de la página
+* Estructura:
+* - body
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    font-family: "Darumadrop One", serif;
+    font-weight: 400;
+    font-style: normal;
+    background-image: url(../img/fondo.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+/*-----Encabezado-----*/
+/* Descripción: Estilos para el encabezado (título) principal
+* Estructura:
+* - h1-span
+*/
+h1 {
+    font-size: 5em;
+    padding-bottom: 10px;
+}
+
+span {
+    color: #FCD567;
+}
+
+/*-----Huevo contenedor-----*/
+/* Descripción: Estilos para el contenedor que simula el huevo donde está la mascota
+* Estructura:
+* - huevito-pantalla
+* - huevito-mascota
+* - huevito-botones
+*/
+.huevito {
+    height: 420px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    /* El border-radius está diseñado para crear la forma del huevo*/
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; 
+    box-shadow: 0 0 50px rgba(192, 111, 124, 0.384);
+}
+
+/*-----Pantalla del Huevo-----*/
+/* Descripción: Estilos para la pantalla del huevo
+* Estructura:
+* - pantalla-mascota
+*/
+.pantalla {
+    width: 40%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FCD567;
+    border: 20px solid transparent;
+    border-image: url(../img/huevo/borde_pantalla.png);
+    border-image-slice: 50 50 50 50 fill;
+    border-image-outset: 24px;
+    border-image-repeat: stretch stretch;
+    margin: 50px;
+}
+
+/*-----Mascota-----*/
+/* Descripción: Estilos para la mascota dentro de la pantalla
+*/
+.mascota {
+    /* Ancho y alto al 100% para que la mascota ocupe toda la .pantalla */
+    width: 100%;
+    height: 100%;
+    /* Gif de la mascota */
+    background-image: url(../img/sprites/sprite_normal.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    visibility: hidden;
+}
+
+/*-----Botones de Interacción-----*/
+/* Descripción: Estilos para los botones que controlan la alimentación, el sueño y el juego
+* Estructura:
+* - botones-boton
+*/
+.botones {
+    width: 50%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.boton {
+    width: 22%;
+    height: 54%;
+    border: 4px solid white;
+    border-radius: 50%;
+    background-color: #00A0AB;
+    box-shadow: 0 0 0 3px #00A0AB;
+    cursor: pointer;
+}
+
+/*  El segundo botón se alinea con la parte inferior del contenedor .botones */
+.boton:nth-child(2) {
+    margin-top: auto;
+}
+
+/*-----Barras de Progreso-----*/
+/* Descripción: Estilos para las barras que muestran el estado de hambre, sueño y aburrimiento
+* Estructura:
+* - barras-contenedor
+*/
+.barras {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    font-family: monospace;
+    font-size: 1.5em;
+}
+
+/*-----Contenedor de barras y sus respectivas etiquetas----*/
+/* Descripción: Estilos para el contenedor que aloja las barras que muestran el estado de hambre, sueño y aburrimiento
+* Estructura:
+* - contenedor-barra
+*/
+.contenedor{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: #ffffff;
+}
+
+/*-----Barra de estado----*/
+/* Descripción: Estilos para las barras que muestran el estado de hambre, sueño y aburrimiento
+* Estructura:
+* - barra-divisiones
+*/
+.barra {
+    width: 100%;
+    height: 20px;
+    padding: 4px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #00A0AB;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+}
+
+.divisiones {
+    /* Ancho del 10% de cada division ya que el número de divisiones iniciales son 10 */
+    width : 10%; 
+    height : 100%;
+    background-color : white;
+    border-radius : 25px;
+    /* Separación de las divisiones para una mejor visualización del estado de las barras */
+    margin : 3px; 
+    display : inline-block;
+}
+
+/*-----Interruptor On/Off-----*/
+/* Descripción: Estilos para el contenedor donde se encuentra el botón que controla el estado del juego cuando se encuentra apagado
+* Estructura:
+* - onOff-botonOnOff
+*/
+.onOff {
+    width: 80px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 30px;
+    justify-content: flex-start;
+    background-color: #00A0AB;
+    box-shadow: 0 0 15px #ffffff;
+    margin-top: 20px;
+}
+
+.botonOnOff{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Estilo del contenedro del boton de encendido / apagado cuando se encuentra encendido */
+.onOff.encendido{
+    justify-content: flex-end;
+    background-color: #FCD567;
+    box-shadow: 0 0 15px rgba(255, 230, 0, 0.7);
+}
+
+/*-----Modal-----*/
+/* Descripción: Estilos para la ventana modal que aparece al inicio y al final del juego
+* Estructura:
+* - modal-modalBotones
+* - modal-start
+*/
+.modal{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    background-color: #00545886;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalBotones{
+    height: 120px;
+    width: 170px;
+    padding-top: 512px;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 1.2em;
+}
+
+.modal .modalBotones p:nth-child(2){
+    align-self: flex-start;
+}
+
+.modal .start{
+    text-align: center;
+    font-size: 2.5em;
+    padding-top: 110px;
+}
+
+/*-----Estilos Responsivos-----*/
+@media screen and (max-width:800px){
+    body{
+        gap: 20px;
+    }
+    h1{
+        font-size: 4em;
+        padding-bottom: 0;
+    }
+    .barra{
+        width: 80%;
+    }
+    .barras{
+        flex-direction: column;
+        gap: 25px;
+    }
+    .modalBotones{
+        padding-top: 425px;
+    }
+    .modal .start{
+        padding-top: 238px;
+    }
+}
+@media screen and (max-width:600px){
+    .huevito{
+        flex-wrap: wrap;
+    }
+    h1{
+        font-size:3em;
+    }
+    .barras{
+        flex-direction: column;
+        gap: 25px;
+    }
+    .modalBotones{
+        padding-top: 413px;
+    }
+    .modal .start{
+        padding-top: 240px;
+    }
+}
+
+@media screen and (max-width:400px){
+    body{
+        gap: 30px;
+    }
+    .modalBotones{
+        height: 120px;
+        width: 170px;
+        text-align: center;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        font-size: 1.2em;
+    }
+    .huevito{
+        height: calc(420px/1.2);
+        width: calc(320px/1.2);
+    }
+    h1{
+        font-size: 2.5em;
+        text-align: center;
+    }
+    .OffOn {
+        width: 50px;
+        height: 25px;
+    }
+    .modalBotones{
+        width: 150px;
+        padding-top: 393px;
+    }
+    .modal .start{
+        padding-top: 230px;
+    }
+}

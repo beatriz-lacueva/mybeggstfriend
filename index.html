@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+        Estructura general del documento HTML 
+        Este archivo contiene la estructura principal de una aplicación interactiva
+        basada en la mascota virtual "Tamagotchi"?.
+        Estructura general:
+        - Encabezado
+        - Contenido principal
+    -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Beegst friend</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script defer src="js/funciones.js"></script>
+</head>
+<body>
+    <!-- 
+        Encabezado principal de la página con el nombre del juego.
+    -->
+    <h1>My b<span>eeg</span>st friend</h1>
+    
+    <!-- 
+        Bloque principal: Contenedor del "huevo virtual" 
+        Incluye la pantalla para mostrar la mascota y los botones de interacción.
+    -->
+    <div class="huevito">
+        <!-- Pantalla para mostrar el estado de la mascota -->
+        <div class="pantalla">
+            <div class="mascota"></div> <!-- Contenedor visual de la mascota -->
+        </div>
+
+        <!-- Botones interactivos para las acciones del usuario -->
+        <div class="botones">
+            <button class="boton"></button> <!-- Botón 1: Acción de alimentar -->
+            <button class="boton"></button> <!-- Botón 2: Acción de dormir -->
+            <button class="boton"></button> <!-- Botón 3: Acción de jugar -->
+        </div>
+    </div>
+    
+    <!-- 
+        Barras de progreso del estado de la mascota.
+        Cada barra representa una necesidad: hambre, sueño y aburrimiento.
+    -->
+    <div class="barras">
+        <!-- Contenedor para el estado de hambre -->
+        <div class="contenedor hambre">
+            <p>hunger</p> <!-- Etiqueta descriptiva -->
+            <div class="barra"></div> <!-- Barra visual del progreso -->
+        </div>
+
+        <!-- Contenedor para el estado de sueño -->
+        <div class="contenedor sueño">
+            <p>sleepyness</p> <!-- Etiqueta descriptiva -->
+            <div class="barra"></div> <!-- Barra visual del progreso -->
+        </div>
+
+        <!-- Contenedor para el estado de aburrimiento -->
+        <div class="contenedor aburrimiento">
+            <p>boredom</p> <!-- Etiqueta descriptiva -->
+            <div class="barra"></div> <!-- Barra visual del progreso -->
+        </div>
+    </div>
+    
+    <!-- 
+        Modal de inicio o reinicio del juego 
+        Proporciona las instrucciones de juego para interactuar con la mascota.
+    -->
+    <div class="modal">
+        <!-- Instrucciones del modal con instrucciones -->
+        <div class="modalBotones">
+            <p>⭫ <br> feed!</p> <!-- Instrucción para alimentar -->
+            <p>sleep! <br> ⇣</p> <!-- Instrucción para dormir -->
+            <p>⭫ <br> play!</p> <!-- Instrucción para jugar -->
+        </div>
+        <p class="start">start!</p> <!-- Texto para indicar el botón de inicio de juego -->
+    </div>
+    
+    <!-- 
+        Interruptor On/Off 
+        Controla el estado general de la aplicación (encendida/apagada).
+    -->
+    <div class="onOff">
+        <button class="botonOnOff"></button> <!-- Botón para alternar el estado On/Off -->
+    </div>
+</body>
+</html>
+
