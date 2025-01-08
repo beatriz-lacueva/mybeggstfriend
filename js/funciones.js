@@ -24,6 +24,7 @@ const modal = document.querySelector(".modal");
 const barrasTimer = document.querySelectorAll(".barra");
 // Botones para interactuar con los estados
 const botones = document.querySelectorAll(".boton");
+const start = document.querySelector(".start");
 
 // inicia el juego con 10 divisiones cada barra
 barrasTimer.forEach((barra) => {
@@ -56,6 +57,7 @@ botonOnOff.addEventListener("click", () => {
         onOff.classList.add("encendido");
         mascota.style.visibility = "visible";
         modal.style.visibility = "hidden";
+        start.style.visibility = "hidden";
 
         // cada vez que reinicia el juego estan las barras llenas
         barrasTimer.forEach((barra) => {
@@ -76,12 +78,20 @@ botonOnOff.addEventListener("click", () => {
     }
 });
 
+// Variable para guardar los temporalizadores de las barras
+let timers = [];
+
 /**
  * Vacía las barras gradualmente y actualiza el estado de la mascota.
  * Detiene el juego si todas las barras están vacías.
  * @return {void} No devuelve ningún valor.
  */
 function jugar() {
+
+    // parar temporalizador anterior
+    timers.forEach(timer => clearInterval(timer));
+    // array vacio para guardar temporalizador nuevo
+    timers = [];
 
     barrasTimer.forEach(barra => {
 
@@ -114,6 +124,9 @@ function jugar() {
             }
 
         }, 700);
+
+        // guardar temporalizador de ese momento
+        timers.push(timer);
 
     });
 
