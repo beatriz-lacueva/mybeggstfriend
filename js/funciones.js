@@ -143,11 +143,9 @@ function jugar() {
                 }
 
                 // actualiza sprites
-                if (barra.children.length >= 8) {
-                    c
-                } else if (barra.children.length >= 4) {
+                if (barra.children.length >= 5 && barra.children.length <= 7) {
                     mascota.style.backgroundImage = "url(../img/sprites/sprite_normal.gif)"; // Mascota normal
-                } else if (barra.children.length >= 1) {
+                } else if (barra.children.length >= 1 && barra.children.length <= 4) {
                     mascota.style.backgroundImage = "url(../img/sprites/sprite_triste.gif)"; // Mascota triste
                 } else if (barra.children.length === 0) {
                     mascota.style.backgroundImage = "url(../img/sprites/sprite_muerto.gif)"; // Mascota muerta
