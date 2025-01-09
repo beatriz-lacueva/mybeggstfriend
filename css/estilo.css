@@ -9,7 +9,7 @@
 }
 
 body {
-    height: 100vh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,9 +25,12 @@ body {
     color: white;
 }
 
+/*-----Audio-----*/
+/* Descripción: Estilos para el encabezado (título) principal*/
 audio{
     display: none;
 }
+
 /*-----Encabezado-----*/
 /* Descripción: Estilos para el encabezado (título) principal
 * Estructura:
