@@ -4,8 +4,6 @@
 *  - El usuario puede encender o apagar el juego con un botón.
 *  - Los botones permiten alimentar, hacer dormir y jugar con la mascota.
 *  - Las barras de estado se vacían con el tiempo y se rellenan con clicKs.
-*  Datos:
-*  - ????
 *  Estructura:
 *  - Constantes
 *  - Variables
@@ -25,6 +23,7 @@ const barrasTimer = document.querySelectorAll(".barra");
 // Botones para interactuar con los estados
 const botones = document.querySelectorAll(".boton");
 const start = document.querySelector(".start");
+const audio = document.querySelector("audio");
 
 // inicia el juego con 10 divisiones cada barra
 barrasTimer.forEach((barra) => {
@@ -44,20 +43,24 @@ barrasTimer.forEach((barra) => {
  */
 botonOnOff.addEventListener("click", () => {
     
-    // Apagar el juego
+    // apagar el juego
     if (onOff.classList.contains("encendido")) {
 
         onOff.classList.remove("encendido");
         mascota.style.visibility = "hidden";
-        modal.style.visibility = "visible";                         
+        modal.style.visibility = "visible";
+        audio.pause();
+                                 
 
-    // Encender el juego                                                        
+    // encender el juego                                                        
     } else {
 
         onOff.classList.add("encendido");
         mascota.style.visibility = "visible";
         modal.style.visibility = "hidden";
         start.style.visibility = "hidden";
+        audio.play();
+        audio.currentTime = 0;
 
         // cada vez que reinicia el juego estan las barras llenas
         barrasTimer.forEach((barra) => {
@@ -72,13 +75,13 @@ botonOnOff.addEventListener("click", () => {
 
         });
 
-        // Llamamos a la función jugar para iniciar el temporizador
+        // llamamos a la función jugar para iniciar el temporizador
         jugar();
 
     }
 });
 
-// Variable para guardar los temporalizadores de las barras
+// Variable para guardar los temporalizadores de las barras y que no vaya aumentando la velocidad cada vez que el juego empieza
 let timers = [];
 
 /**
@@ -88,6 +91,8 @@ let timers = [];
  */
 function jugar() {
 
+    // el primer sprite que sale al iniciar el juego es el sprite feliz, ya que sus barras están llenas
+    mascota.style.backgroundImage = "url(../img/sprites/sprite_feliz.gif)";
     // parar temporalizador anterior
     timers.forEach(timer => clearInterval(timer));
     // array vacio para guardar temporalizador nuevo
@@ -109,7 +114,7 @@ function jugar() {
 
                 // actualiza sprites
                 if (barra.children.length >= 8) {
-                    mascota.style.backgroundImage = "url(../img/sprites/sprite_feliz.gif)"; // Mascota feliz
+                    c
                 } else if (barra.children.length >= 4) {
                     mascota.style.backgroundImage = "url(../img/sprites/sprite_normal.gif)"; // Mascota normal
                 } else if (barra.children.length >= 1) {
@@ -145,10 +150,10 @@ botones.forEach((boton, i) => {
      */
     boton.addEventListener("click", () => {
 
-        // cada barra se asocia al botón presionado
+        // cada barra tiene su boton respectivo
         const barra = barrasTimer[i];
 
-        // añadir divisiones siempre que sean 10 o menos
+        // añadir divisiones si son menos de 10
         if (barra.children.length < 10) {
 
             const division = document.createElement("div");

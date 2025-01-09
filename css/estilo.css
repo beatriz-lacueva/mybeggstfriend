@@ -25,6 +25,9 @@ body {
     color: white;
 }
 
+audio{
+    display: none;
+}
 /*-----Encabezado-----*/
 /* Descripción: Estilos para el encabezado (título) principal
 * Estructura:
