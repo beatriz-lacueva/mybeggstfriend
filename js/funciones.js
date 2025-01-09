@@ -37,6 +37,7 @@ barrasTimer.forEach((barra) => {
     }
 });
 
+
 /**
  * Evento que enciende o apaga el juego cuando se hace clic en el botón principal.
  * @event click
@@ -54,7 +55,6 @@ botonOnOff.addEventListener("click", () => {
         modal.style.visibility = "visible";
         instrucciones.style.visibility = "visible";
         start.style.visibility = "visible";
-        audio.pause();
 
     // encender el juego                                                        
     } else {
@@ -96,11 +96,16 @@ document.addEventListener('visibilitychange', function() {
         audio.pause();
 
     }else{
-
+    // Verificar si el juego está encendido
+    if (onOff.classList.contains("encendido")) {
+        // Reproducir el audio solo si el juego está encendido y el modal no está visible
         audio.play();
 
+    } else {
+        audio.pause(); // Si el juego está apagado o el modal está visible, pausarlo
     }
 
+    }
 });
 
 // Variable para guardar los temporalizadores de las barras y que no vaya aumentando la velocidad cada vez que el juego empieza
