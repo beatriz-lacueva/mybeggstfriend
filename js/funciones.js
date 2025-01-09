@@ -24,6 +24,7 @@ const barrasTimer = document.querySelectorAll(".barra");
 const botones = document.querySelectorAll(".boton");
 const start = document.querySelector(".start");
 const audio = document.querySelector("audio");
+const instrucciones = document.querySelector(".modalBotones");
 
 
 
@@ -51,8 +52,9 @@ botonOnOff.addEventListener("click", () => {
         onOff.classList.remove("encendido");
         mascota.style.visibility = "hidden";
         modal.style.visibility = "visible";
+        instrucciones.style.visibility = "visible";
+        start.style.visibility = "visible";
         audio.pause();
-                                 
 
     // encender el juego                                                        
     } else {
@@ -63,6 +65,9 @@ botonOnOff.addEventListener("click", () => {
         start.style.visibility = "hidden";
         audio.play();
         audio.currentTime = 0;
+        instrucciones.style.visibility = "hidden";
+        start.style.visibility = "hidden";
+
 
         // cada vez que reinicia el juego estan las barras llenas
         barrasTimer.forEach((barra) => {
@@ -95,7 +100,7 @@ document.addEventListener('visibilitychange', function() {
         audio.play();
 
     }
-    
+
 });
 
 // Variable para guardar los temporalizadores de las barras y que no vaya aumentando la velocidad cada vez que el juego empieza

@@ -46,6 +46,12 @@
             <button class="boton"></button> <!-- Botón 2: Acción de dormir -->
             <button class="boton"></button> <!-- Botón 3: Acción de jugar -->
         </div>
+        <!-- Instrucciones del modal con instrucciones -->
+        <div class="modalBotones">
+            <p>⭫ <br> feed!</p> <!-- Instrucción para alimentar -->
+            <p>sleep! <br> ⇣</p> <!-- Instrucción para dormir -->
+            <p>⭫ <br> play!</p> <!-- Instrucción para jugar -->
+        </div>
     </div>
     
     <!-- 
@@ -76,24 +82,21 @@
         Modal de inicio o reinicio del juego 
         Proporciona las instrucciones de juego para interactuar con la mascota.
     -->
-    <div class="modal">
-        <!-- Instrucciones del modal con instrucciones -->
-        <div class="modalBotones">
-            <p>⭫ <br> feed!</p> <!-- Instrucción para alimentar -->
-            <p>sleep! <br> ⇣</p> <!-- Instrucción para dormir -->
-            <p>⭫ <br> play!</p> <!-- Instrucción para jugar -->
+    <div class="modal"></div>
+
+    <div class="startOnOff">
+            <!-- Texto para indicar el botón de inicio de juego -->
+        <p class="start">start!</p> 
+
+        <!-- 
+            Interruptor On/Off 
+            Controla el estado general de la aplicación (encendida/apagada).
+        -->
+        <div class="onOff">
+            <button class="botonOnOff"></button> <!-- Botón para alternar el estado On/Off -->
         </div>
-        
     </div>
     
-    <!-- 
-        Interruptor On/Off 
-        Controla el estado general de la aplicación (encendida/apagada).
-    -->
-    <div class="onOff">
-        <p class="start">start!</p> <!-- Texto para indicar el botón de inicio de juego -->
-        <button class="botonOnOff"></button> <!-- Botón para alternar el estado On/Off -->
-    </div>
 </body>
 </html>
 

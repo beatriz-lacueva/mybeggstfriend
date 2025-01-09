@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 25px;
     font-family: "Darumadrop One", serif;
     font-weight: 400;
     font-style: normal;
@@ -24,6 +24,7 @@ body {
     background-repeat: no-repeat;
     color: white;
 }
+
 
 /*-----Audio-----*/
 /* Descripción: Estilos para el encabezado (título) principal*/
@@ -55,6 +56,7 @@ span {
 .huevito {
     height: 420px;
     width: 320px;
+    margin: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -123,6 +125,11 @@ span {
     background-color: #00A0AB;
     box-shadow: 0 0 0 3px #00A0AB;
     cursor: pointer;
+}
+
+.boton:active {
+    background-color: pink;
+    box-shadow: 0 0 0 3px pink;
 }
 
 /*  El segundo botón se alinea con la parte inferior del contenedor .botones */
@@ -207,9 +214,11 @@ span {
 }
 
 .modalBotones{
+    position: fixed;
     height: 120px;
     width: 170px;
-    padding-top: 512px;
+    z-index: 1;
+    padding-top: 265px;
     text-align: center;
     display: flex;
     align-items: flex-end;
@@ -217,10 +226,15 @@ span {
     font-size: 1.2em;
 }
 
-.modal .modalBotones p:nth-child(2){
+.modalBotones p:nth-child(2){
     align-self: flex-start;
 }
-
+.startOnOff{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 /*-----Interruptor On/Off-----*/
 /* Descripción: Estilos para el contenedor donde se encuentra el botón que controla el estado del juego cuando se encuentra apagado
 * Estructura:
@@ -232,14 +246,18 @@ span {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     border: none;
     border-radius: 30px;
-    justify-content: flex-start;
     background-color: #00A0AB;
     box-shadow: 0 0 15px #ffffff;
     margin-top: 20px;
 }
 
+.start{
+    font-size: 2.5em;
+    z-index: 1;
+}
 .botonOnOff{
     width: 50%;
     height: 100%;
@@ -257,11 +275,6 @@ span {
     box-shadow: 0 0 15px rgba(255, 230, 0, 0.7);
 }
 
-.onOff .start{
-    text-align: center;
-    font-size: 2.5em;
-    padding-bottom: 100px;
-}
 
 /*-----Estilos Responsivos-----*/
 @media screen and (max-width:800px){
@@ -316,6 +329,11 @@ span {
         height: calc(420px/1.3);
         width: calc(320px/1.3);
     }
+    .pantalla {
+        border-image-slice: 50 50 50 50 fill;
+        border-image-outset: 19px;
+        border-image-repeat: stretch stretch;
+    }
     h1{
         font-size: 2.5em;
         text-align: center;
@@ -324,11 +342,14 @@ span {
         width: 50px;
         height: 25px;
     }
+    .barras{
+        gap: 10px;
+    }
     .modalBotones{
         width: 150px;
         padding-top: 393px;
     }
-    .barras{
-        gap: 10px;
+    .start{
+        font-size: 1.5em;
     }
 }
