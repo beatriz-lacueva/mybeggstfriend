@@ -25,6 +25,8 @@ const botones = document.querySelectorAll(".boton");
 const start = document.querySelector(".start");
 const audio = document.querySelector("audio");
 
+
+
 // inicia el juego con 10 divisiones cada barra
 barrasTimer.forEach((barra) => {
     for (let i = 0; i < 10; i++) {
@@ -81,6 +83,21 @@ botonOnOff.addEventListener("click", () => {
     }
 });
 
+document.addEventListener('visibilitychange', function() {
+
+    if (document.hidden) {
+
+        // Si la página se vuelve invisible (como cuando el móvil se apaga o se bloquea), detener el audio
+        audio.pause();
+
+    }else{
+
+        audio.play();
+
+    }
+    
+});
+
 // Variable para guardar los temporalizadores de las barras y que no vaya aumentando la velocidad cada vez que el juego empieza
 let timers = [];
 
@@ -110,6 +127,7 @@ function jugar() {
                 // limpia las barras cuando el juego este apagado
                 if (modal.style.visibility === "visible"){
                     barra.innerHTML = "";
+                    audio.pause();
                 }
 
                 // actualiza sprites
@@ -135,7 +153,6 @@ function jugar() {
 
     });
 
-    
 }
 
 
