@@ -131,6 +131,8 @@ function jugar() {
 
                 // limpia las barras cuando el juego este apagado
                 if (modal.style.visibility === "visible"){
+                    instrucciones.style.visibility = "visible";
+                start.style.visibility = "visible";
                     barra.innerHTML = "";
                     audio.pause();
                 }

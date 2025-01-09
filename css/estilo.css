@@ -9,7 +9,7 @@
 }
 
 body {
-    height: 100svh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -234,6 +234,7 @@ span {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 5px;
 }
 /*-----Interruptor On/Off-----*/
 /* Descripción: Estilos para el contenedor donde se encuentra el botón que controla el estado del juego cuando se encuentra apagado
@@ -243,6 +244,7 @@ span {
 .onOff {
     width: 80px;
     height: 40px;
+    margin-bottom: 40px;
     position: relative;
     display: flex;
     align-items: center;
@@ -292,38 +294,31 @@ span {
         flex-direction: column;
         gap: 25px;
     }
-    .modalBotones{
-        padding-top: 425px;
-    }
 }
 @media screen and (max-width:600px){
     .huevito{
         flex-wrap: wrap;
     }
+    .pantalla {
+        border-image-slice: 50 50 50 50 fill;
+        border-image-outset: 19px;
+        border-image-repeat: stretch stretch;
+    }
     h1{
         font-size:3em;
+    }
+    .modalBotones{
+        padding-top: 250px;
     }
     .barras{
         flex-direction: column;
         gap: 25px;
-    }
-    .modalBotones{
-        padding-top: 413px;
     }
 }
 
 @media screen and (max-width:400px){
     body{
         gap: 20px;
-    }
-    .modalBotones{
-        height: 120px;
-        width: 170px;
-        text-align: center;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        font-size: 1.2em;
     }
     .huevito{
         height: calc(420px/1.3);
@@ -347,7 +342,7 @@ span {
     }
     .modalBotones{
         width: 150px;
-        padding-top: 393px;
+        padding-top: 230px;
     }
     .start{
         font-size: 1.5em;
