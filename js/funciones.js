@@ -9,8 +9,7 @@
 *  - Variables
 *  - Funciones
 *------------------------------------*/
-
-
+// Contenedor que alberga el botonOnOff y que alterna el estado del interruptor
 const onOff = document.querySelector(".onOff");
 // Botón que alterna el estado del interruptor
 const botonOnOff = document.querySelector(".botonOnOff");
@@ -22,10 +21,12 @@ const modal = document.querySelector(".modal");
 const barrasTimer = document.querySelectorAll(".barra");
 // Botones para interactuar con los estados
 const botones = document.querySelectorAll(".boton");
+// Botón para iniciar o reiniciar el juego
 const start = document.querySelector(".start");
+// Audio de fondo del juego
 const audio = document.querySelector("audio");
-const instrucciones = document.querySelector(".modalBotones");
-
+// Instrucciones que aparecen en el modal para mostrar el funcionamiento del juego
+const instrucciones = document.querySelector(".instrucciones");
 
 
 // inicia el juego con 10 divisiones cada barra
@@ -41,9 +42,6 @@ barrasTimer.forEach((barra) => {
 /**
  * Evento que enciende o apaga el juego cuando se hace clic en el botón principal.
  * @event click
- * @param {Event} 
- * @return {undefined} No tiene ningun return.
- * @see {@link } 
  */
 botonOnOff.addEventListener("click", () => {
     
@@ -56,7 +54,7 @@ botonOnOff.addEventListener("click", () => {
         instrucciones.style.visibility = "visible";
         start.style.visibility = "visible";
 
-    // encender el juego                                                        
+    // encender el juego                                                         
     } else {
 
         onOff.classList.add("encendido");
@@ -88,6 +86,12 @@ botonOnOff.addEventListener("click", () => {
     }
 });
 
+/**
+ * Evento que detecta el cambio en la visibilidad de la página.
+ * Este evento se dispara cuando el estado de visibilidad de la página cambia (por ejemplo, cuando el usuario minimiza la ventana o la bloquea en un dispositivo móvil).
+ * Si la página se vuelve invisible, se pausa el audio. Si la página se vuelve visible y el juego está encendido, se reproduce el audio, siempre y cuando el modal no esté activo.
+ * @event visibilitychange
+ */
 document.addEventListener('visibilitychange', function() {
 
     if (document.hidden) {
@@ -98,11 +102,11 @@ document.addEventListener('visibilitychange', function() {
     }else{
     // Verificar si el juego está encendido
     if (onOff.classList.contains("encendido")) {
-        // Reproducir el audio solo si el juego está encendido y el modal no está visible
+        
         audio.play();
 
     } else {
-        audio.pause(); // Si el juego está apagado o el modal está visible, pausarlo
+        audio.pause(); 
     }
 
     }
@@ -120,6 +124,7 @@ function jugar() {
 
     // el primer sprite que sale al iniciar el juego es el sprite feliz, ya que sus barras están llenas
     mascota.style.backgroundImage = "url(../img/sprites/sprite_feliz.gif)";
+    
     // parar temporalizador anterior
     timers.forEach(timer => clearInterval(timer));
     // array vacio para guardar temporalizador nuevo
@@ -137,23 +142,22 @@ function jugar() {
                 // limpia las barras cuando el juego este apagado
                 if (modal.style.visibility === "visible"){
                     instrucciones.style.visibility = "visible";
-                start.style.visibility = "visible";
+                    start.style.visibility = "visible";
                     barra.innerHTML = "";
                     audio.pause();
                 }
 
                 // actualiza sprites
-                if (barra.children.length >= 5 && barra.children.length <= 7) {
-                    mascota.style.backgroundImage = "url(../img/sprites/sprite_normal.gif)"; // Mascota normal
-                } else if (barra.children.length >= 1 && barra.children.length <= 4) {
-                    mascota.style.backgroundImage = "url(../img/sprites/sprite_triste.gif)"; // Mascota triste
-                } else if (barra.children.length === 0) {
+                actualizarSprite();
+
+                // Verifica si alguna barra ha llegado a 0
+                if (barra.children.length === 0) {
                     mascota.style.backgroundImage = "url(../img/sprites/sprite_muerto.gif)"; // Mascota muerta
                     clearInterval(timer);
                     modal.style.visibility = "visible";
                     onOff.classList.remove("encendido");
                 }
-                
+
             }
 
         }, 700);
@@ -163,6 +167,49 @@ function jugar() {
 
     });
 
+}
+
+/**
+ * Actualiza el sprite de la mascota según el estado general de las barras.
+ * - Si alguna barra tiene menos de 4 divisiones, la mascota se muestra triste.
+ * - Si alguna barra tiene menos de 7 divisiones, la mascota se muestra normal.
+ * - Si todas las barras están llenas, la mascota se muestra feliz.
+ * @return {void} No devuelve ningún valor.
+ */
+function actualizarSprite() {
+
+    let barrasConMenosDe4 = 0;
+    let barrasConMenosDe7 = 0;
+
+    barrasTimer.forEach(barra => {
+
+        if (barra.children.length < 4) {
+
+            barrasConMenosDe4++;
+        }
+
+        if (barra.children.length < 7) {
+
+            barrasConMenosDe7++;
+
+        }
+
+    });
+
+    // cambiar sprite basado en las condiciones de las barras
+    if (barrasConMenosDe4 > 0) {
+
+        mascota.style.backgroundImage = "url(../img/sprites/sprite_triste.gif)";
+
+    } else if (barrasConMenosDe7 > 0) {
+
+        mascota.style.backgroundImage = "url(../img/sprites/sprite_normal.gif)";
+
+    } else {
+
+        mascota.style.backgroundImage = "url(../img/sprites/sprite_feliz.gif)";
+
+    }
 }
 
 
@@ -198,6 +245,8 @@ botones.forEach((boton, i) => {
             mascota.style.backgroundImage = "url(../img/sprites/sprite_jugar.gif)";
         }
 
+        // Después de cada clic en los botones, se actualiza el sprite según el estado general de las barras
+        setTimeout(actualizarSprite, 1000);
     });
 
 });

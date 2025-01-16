@@ -52,11 +52,11 @@ span {
 * - huevito-pantalla
 * - huevito-mascota
 * - huevito-botones
+* - huevito-instrucciones
 */
 .huevito {
     height: 420px;
     width: 320px;
-    aspect-ratio: 320 / 420;
     margin: 15px;
     display: flex;
     flex-direction: column;
@@ -138,6 +138,20 @@ span {
     margin-top: auto;
 }
 
+
+.instrucciones{
+    position: fixed;
+    z-index: 1;
+    height: 120px;
+    width: 170px;
+    padding-top: 265px;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 1.2em;
+}
+
 /*-----Barras de Progreso-----*/
 /* Descripción: Estilos para las barras que muestran el estado de hambre, sueño y aburrimiento
 * Estructura:
@@ -200,9 +214,6 @@ span {
 
 /*-----Modal-----*/
 /* Descripción: Estilos para la ventana modal que aparece al inicio y al final del juego
-* Estructura:
-* - modal-modalBotones
-* - modal-start
 */
 .modal{
     height: 100vh;
@@ -214,22 +225,16 @@ span {
     align-items: center;
 }
 
-.modalBotones{
-    position: fixed;
-    height: 120px;
-    width: 170px;
-    z-index: 1;
-    padding-top: 265px;
-    text-align: center;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    font-size: 1.2em;
-}
-
-.modalBotones p:nth-child(2){
+.instrucciones p:nth-child(2){
     align-self: flex-start;
 }
+
+/*-----start y botón on/off----*/
+/* Descripción: Estilos para el contenedor donde se encuentra el botón que controla el estado del juego cuando se encuentra apagado
+* Estructura:
+* - startOnOff-start
+* - startOnOff-OnOff
+*/
 .startOnOff{
     display: flex;
     flex-direction: column;
@@ -237,6 +242,12 @@ span {
     justify-content: center;
     gap: 5px;
 }
+
+.start{
+    font-size: 2.5em;
+    z-index: 1;
+}
+
 /*-----Interruptor On/Off-----*/
 /* Descripción: Estilos para el contenedor donde se encuentra el botón que controla el estado del juego cuando se encuentra apagado
 * Estructura:
@@ -257,10 +268,6 @@ span {
     margin-top: 20px;
 }
 
-.start{
-    font-size: 2.5em;
-    z-index: 1;
-}
 .botonOnOff{
     width: 50%;
     height: 100%;
@@ -271,12 +278,15 @@ span {
     cursor: pointer;
 }
 
+
 /* Estilo del contenedro del boton de encendido / apagado cuando se encuentra encendido */
 .onOff.encendido{
     justify-content: flex-end;
     background-color: #FCD567;
     box-shadow: 0 0 15px rgba(255, 230, 0, 0.7);
 }
+
+
 
 
 /*-----Estilos Responsivos-----*/
@@ -313,12 +323,11 @@ span {
     h1{
         font-size:3em;
     }
-    .modalBotones{
+    .instrucciones{
         width: 150px;
         padding-top: 240px;
     }
     .barras{
-        flex-direction: column;
         gap: 25px;
     }
 }
@@ -345,7 +354,7 @@ span {
         width: 50px;
         height: 25px;
     }
-    .modalBotones{
+    .instrucciones{
         width: 130px;
         padding-top: 200px;
     }

@@ -21,7 +21,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap" rel="stylesheet">
 </head>
 <body>
-    <audio controls loop>
+    <!-- 
+        Audio de fondo.
+    -->
+    <audio>
         <source src="audio/Perfume - love the world.mp3" type="audio/ogg">
         <source src="audio/Perfume - love the world.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
@@ -43,15 +46,21 @@
 
         <!-- Botones interactivos para las acciones del usuario -->
         <div class="botones">
-            <button class="boton"></button> <!-- Botón 1: Acción de alimentar -->
-            <button class="boton"></button> <!-- Botón 2: Acción de dormir -->
-            <button class="boton"></button> <!-- Botón 3: Acción de jugar -->
+            <!-- Botón 1: Acción de alimentar -->
+            <button class="boton"></button> 
+            <!-- Botón 2: Acción de dormir -->
+            <button class="boton"></button> 
+            <!-- Botón 3: Acción de jugar -->
+            <button class="boton"></button> 
         </div>
-        <!-- Instrucciones del modal con instrucciones -->
-        <div class="modalBotones">
-            <p>↑ <br> feed!</p> <!-- Instrucción para alimentar -->
-            <p>sleep! <br> ↓</p> <!-- Instrucción para dormir -->
-            <p>↑ <br> play!</p> <!-- Instrucción para jugar -->
+        <!-- Instrucciones del modal-->
+        <div class="instrucciones">
+            <!-- Instrucción para alimentar -->
+            <p>↑ <br> feed!</p> 
+            <!-- Instrucción para dormir -->
+            <p>sleep! <br> ↓</p> 
+            <!-- Instrucción para jugar -->
+            <p>↑ <br> play!</p> 
         </div>
     </div>
     
@@ -62,20 +71,26 @@
     <div class="barras">
         <!-- Contenedor para el estado de hambre -->
         <div class="contenedor hambre">
-            <p>hunger</p> <!-- Etiqueta descriptiva -->
-            <div class="barra"></div> <!-- Barra visual del progreso -->
+            <!-- Etiqueta descriptiva -->
+            <p>hunger</p> 
+            <!-- Barra visual del progreso -->
+            <div class="barra"></div> 
         </div>
 
         <!-- Contenedor para el estado de sueño -->
         <div class="contenedor sueño">
-            <p>sleepyness</p> <!-- Etiqueta descriptiva -->
-            <div class="barra"></div> <!-- Barra visual del progreso -->
+            <!-- Etiqueta descriptiva -->
+            <p>sleepyness</p> 
+            <!-- Barra visual del progreso -->
+            <div class="barra"></div> 
         </div>
 
         <!-- Contenedor para el estado de aburrimiento -->
         <div class="contenedor aburrimiento">
-            <p>boredom</p> <!-- Etiqueta descriptiva -->
-            <div class="barra"></div> <!-- Barra visual del progreso -->
+            <!-- Etiqueta descriptiva -->
+            <p>boredom</p> 
+            <!-- Barra visual del progreso -->
+            <div class="barra"></div> 
         </div>
     </div>
     
@@ -87,14 +102,15 @@
 
     <div class="startOnOff">
             <!-- Texto para indicar el botón de inicio de juego -->
-        <p class="start">start!</p> 
+        <p class="start">start ↓</p> 
 
         <!-- 
             Interruptor On/Off 
             Controla el estado general de la aplicación (encendida/apagada).
         -->
         <div class="onOff">
-            <button class="botonOnOff"></button> <!-- Botón para alternar el estado On/Off -->
+            <!-- Botón para alternar el estado On/Off -->
+            <button class="botonOnOff"></button> 
         </div>
     </div>
     
