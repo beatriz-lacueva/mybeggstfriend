@@ -246,7 +246,7 @@ botones.forEach((boton, i) => {
         }
 
         // Después de cada clic en los botones, se actualiza el sprite según el estado general de las barras
-        setTimeout(actualizarSprite, 1000);
+        setTimeout(actualizarSprite, 2000);
     });
 
 });
