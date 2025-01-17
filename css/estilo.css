@@ -361,6 +361,9 @@ span {
     .barras{
         gap: 10px;
     }
+    .contenedor{
+        width: 70%;
+    }
     .start{
         font-size: 2em;
     }

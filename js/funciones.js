@@ -29,13 +29,19 @@ const audio = document.querySelector("audio");
 const instrucciones = document.querySelector(".instrucciones");
 
 
+
+
 // inicia el juego con 10 divisiones cada barra
 barrasTimer.forEach((barra) => {
+
     for (let i = 0; i < 10; i++) {
+
         const division = document.createElement("div");
         division.classList.add("divisiones");
         barra.appendChild(division);
+
     }
+
 });
 
 
@@ -53,6 +59,7 @@ botonOnOff.addEventListener("click", () => {
         modal.style.visibility = "visible";
         instrucciones.style.visibility = "visible";
         start.style.visibility = "visible";
+        audio.pause();
 
     // encender el juego                                                         
     } else {
@@ -112,6 +119,46 @@ document.addEventListener('visibilitychange', function() {
     }
 });
 
+/**
+ * Actualiza el sprite de la mascota según el estado general de las barras.
+ * - Triste: Si alguna barra tiene entre 1 y 4 divisiones.
+ * - Normal: Si todas las barras tienen entre 5 y 7 divisiones.
+ * - Feliz: Si todas las barras tienen entre 8 y 10 divisiones.
+ * - Muerto: Si alguna barra tiene 0 divisiones.
+ * @return {void} No devuelve ningún valor.
+ */
+function actualizarSprite() {
+
+    var barraHambre = barrasTimer[0].children.length;
+    var barraSueño = barrasTimer[1].children.length;
+    var barraAburrimiento = barrasTimer[2].children.length;
+    
+    //si cualquier barra tiene 0 esta muerto
+    if (barraHambre === 0 || barraSueño === 0 || barraAburrimiento === 0) {
+
+        mascota.style.backgroundImage = "url(../img/sprites/sprite_muerto.gif)";
+
+    //si cualquier barra tiene menos de 4 esta triste
+    } else if (barraHambre <= 4 || barraSueño <= 4 || barraAburrimiento <= 4) {
+
+        mascota.style.backgroundImage = "url(../img/sprites/sprite_triste.gif)";
+
+    //si cualquier barra tiene entre 5 y 7 esta normal
+    } else if (barraHambre >= 5 && barraHambre <= 7 &&
+               barraSueño >= 5 && barraSueño <= 7 &&
+               barraAburrimiento >= 5 && barraAburrimiento <= 7) {
+
+        mascota.style.backgroundImage = "url(../img/sprites/sprite_normal.gif)";
+
+    //si cualquier barra tiene entre 8 y 10 esta feliz
+    } else if (barraHambre >= 8 && barraSueño >= 8 && barraAburrimiento >= 8) {
+
+        mascota.style.backgroundImage = "url(../img/sprites/sprite_feliz.gif)";
+        
+    }
+
+}
+
 // Variable para guardar los temporalizadores de las barras y que no vaya aumentando la velocidad cada vez que el juego empieza
 let timers = [];
 
@@ -141,10 +188,12 @@ function jugar() {
 
                 // limpia las barras cuando el juego este apagado
                 if (modal.style.visibility === "visible"){
+
                     instrucciones.style.visibility = "visible";
                     start.style.visibility = "visible";
                     barra.innerHTML = "";
                     audio.pause();
+
                 }
 
                 // actualiza sprites
@@ -152,10 +201,11 @@ function jugar() {
 
                 // Verifica si alguna barra ha llegado a 0
                 if (barra.children.length === 0) {
-                    mascota.style.backgroundImage = "url(../img/sprites/sprite_muerto.gif)"; // Mascota muerta
+
                     clearInterval(timer);
                     modal.style.visibility = "visible";
                     onOff.classList.remove("encendido");
+
                 }
 
             }
@@ -167,49 +217,6 @@ function jugar() {
 
     });
 
-}
-
-/**
- * Actualiza el sprite de la mascota según el estado general de las barras.
- * - Si alguna barra tiene menos de 4 divisiones, la mascota se muestra triste.
- * - Si alguna barra tiene menos de 7 divisiones, la mascota se muestra normal.
- * - Si todas las barras están llenas, la mascota se muestra feliz.
- * @return {void} No devuelve ningún valor.
- */
-function actualizarSprite() {
-
-    let barrasConMenosDe4 = 0;
-    let barrasConMenosDe7 = 0;
-
-    barrasTimer.forEach(barra => {
-
-        if (barra.children.length < 4) {
-
-            barrasConMenosDe4++;
-        }
-
-        if (barra.children.length < 7) {
-
-            barrasConMenosDe7++;
-
-        }
-
-    });
-
-    // cambiar sprite basado en las condiciones de las barras
-    if (barrasConMenosDe4 > 0) {
-
-        mascota.style.backgroundImage = "url(../img/sprites/sprite_triste.gif)";
-
-    } else if (barrasConMenosDe7 > 0) {
-
-        mascota.style.backgroundImage = "url(../img/sprites/sprite_normal.gif)";
-
-    } else {
-
-        mascota.style.backgroundImage = "url(../img/sprites/sprite_feliz.gif)";
-
-    }
 }
 
 
@@ -238,11 +245,17 @@ botones.forEach((boton, i) => {
 
         // cambiar el sprite segun el botón que se clickea
         if (boton === botones[0]) {
+
             mascota.style.backgroundImage = "url(../img/sprites/sprite_comer.gif)";
+
         } else if (boton === botones[1]) {
+
             mascota.style.backgroundImage = "url(../img/sprites/sprite_dormir.gif)";
+
         } else if (boton === botones[2]) {
+
             mascota.style.backgroundImage = "url(../img/sprites/sprite_jugar.gif)";
+
         }
 
         // Después de cada clic en los botones, se actualiza el sprite según el estado general de las barras
