@@ -129,9 +129,9 @@ document.addEventListener('visibilitychange', function() {
  */
 function actualizarSprite() {
 
-    var barraHambre = barrasTimer[0].children.length;
-    var barraSueño = barrasTimer[1].children.length;
-    var barraAburrimiento = barrasTimer[2].children.length;
+    let barraHambre = barrasTimer[0].children.length;
+    let barraSueño = barrasTimer[1].children.length;
+    let barraAburrimiento = barrasTimer[2].children.length;
     
     //si cualquier barra tiene 0 esta muerto
     if (barraHambre === 0 || barraSueño === 0 || barraAburrimiento === 0) {
@@ -218,7 +218,6 @@ function jugar() {
     });
 
 }
-
 
 botones.forEach((boton, i) => {
 
